@@ -37,7 +37,7 @@ def main():
   c1.markdown("<div style='text-align: center;'><b>Opening Tasks</b></div>", unsafe_allow_html=True)
   c2.markdown("<div style='text-align: center;'><b>Closing Tasks</b></div>", unsafe_allow_html=True)
   if clicked > -1:
-      st.switch_page("Opening_Tasks.py") if clicked == 0 else st.switch_page("Closing_Tasks.py")
+      st.switch_page("1_Opening_Tasks.py") if clicked == 0 else (st.switch_page("2_Closing_Tasks.py") if clicked == 1 else None)
 
   st.subheader('Utilities')
   with st.container(height = 200, border = None):
