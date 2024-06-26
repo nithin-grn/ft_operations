@@ -1,0 +1,5 @@
+img.responsive {
+    height: 300px;  /* Fixed height */
+    width: auto;    /* Automatically adjust the width */
+    max-width: 100%; /* Ensure it doesn't overflow the parent container */
+}
