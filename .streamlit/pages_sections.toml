@@ -2,7 +2,7 @@
 path = "Main.py"
 name = "Home"
 
-[[pages]]
+[[Section]]
 name = "Daily Tasks"
 is_section = true
 
@@ -16,7 +16,7 @@ path = "pages/2_Closing_Tasks.py"
 name = "Closing Tasks"
 in_section = true
 
-[[pages]]
+[[Section]]
 name = "Utilities"
 is_section = true
 
