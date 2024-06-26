@@ -15,14 +15,14 @@ with st.container():
 
     # Display clickable images in each column
     with col1:
-        clicked1 = st.clickable_images(
+        clicked1 = clickable_images(
             [images[0]],
             titles=["Image #0"],
             div_style={"display": "flex", "justify-content": "center", "flex-wrap": "wrap"},
             img_style={"margin": "5px", "height": "200px"},
         )
     with col2:
-        clicked2 = st.clickable_images(
+        clicked2 = clickable_images(
             [images[1]],
             titles=["Image #1"],
             div_style={"display": "flex", "justify-content": "center", "flex-wrap": "wrap"},
