@@ -34,8 +34,8 @@ def main():
             img_style={"margin": "1%", "height": "200px", "width": "48%"}
         )
   c1, c2 = st.columns(2)
-  c1.write('Opening Tasks')
-  c2.write('Closing Tasks')
+  c1.markdown("<div style='text-align: center;'><b>Opening Tasks</b></div>", unsafe_allow_html=True)
+  c2.markdown("<div style='text-align: center;'><b>Closing Tasks</b></div>", unsafe_allow_html=True)
   
   st.markdown(f"Image #{clicked} clicked" if clicked > -1 else "No image clicked")
 
