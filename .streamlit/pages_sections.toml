@@ -1,0 +1,31 @@
+[[pages]]
+path = "Main.py"
+name = "Home"
+
+[[pages]]
+name = "Daily Tasks"
+is_section = true
+
+[[pages]]
+path = "pages/1_Opening_Tasks.py"
+name = "Opening Tasks"
+in_section = true
+
+[[pages]]
+path = "pages/2_Closing_Tasks.py"
+name = "Closing Tasks"
+in_section = true
+
+[[pages]]
+name = "Utilities"
+is_section = true
+
+[[pages]]
+path = "pages/3_Inventory.py"
+name = "Inventory"
+in_section = true
+
+[[pages]]
+path = "pages/4_Service_Expectations.py"
+name = "Service_Expectations"
+in_section = true
