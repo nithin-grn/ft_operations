@@ -31,7 +31,7 @@ def get_clickable_images(files):
 
 def main():
   # Path to your local image
-  image_path = 'banner.jpg'
+  image_path = 'banner2.jpg'
   image_data = get_image_as_base64(image_path)
   
   # Display the image using HTML with the responsive class
