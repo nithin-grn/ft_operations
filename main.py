@@ -8,14 +8,35 @@ for file in ["logo.jpg", "opening.jpg"]:
         encoded = base64.b64encode(image.read()).decode()
         images.append(f"data:image/jpeg;base64,{encoded}")
 
-clicked = clickable_images(
-    images,
-    titles=[f"Image #{str(i)}" for i in range(len(images))],
-    div_style={"display": "flex", "justify-content": "center", "flex-wrap": "wrap"},
-    img_style={"margin": "5px", "height": "200px"},
-)
+# Create a container
+with st.container():
+    # Create two columns
+    col1, col2 = st.columns(2)
 
-st.markdown(f"Image #{clicked} clicked" if clicked > -1 else "No image clicked")
+    # Display clickable images in each column
+    with col1:
+        clicked1 = st.clickable_images(
+            [images[0]],
+            titles=["Image #0"],
+            div_style={"display": "flex", "justify-content": "center", "flex-wrap": "wrap"},
+            img_style={"margin": "5px", "height": "200px"},
+        )
+    with col2:
+        clicked2 = st.clickable_images(
+            [images[1]],
+            titles=["Image #1"],
+            div_style={"display": "flex", "justify-content": "center", "flex-wrap": "wrap"},
+            img_style={"margin": "5px", "height": "200px"},
+        )
+
+# Check which image was clicked
+clicked = None
+if clicked1 > -1:
+    clicked = clicked1
+elif clicked2 > -1:
+    clicked = clicked2 + 1  # Adjust index for the second image
+
+st.markdown(f"Image #{clicked} clicked" if clicked is not None else "No image clicked")
 
 st.logo('logo.jpg')
 st.header('FT Local Kitchen & Bar', divider = 'grey')
