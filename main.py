@@ -29,7 +29,7 @@ def main():
         # Display clickable images in a flexbox layout
         clicked = clickable_images(
             images,
-            titles=[f"Image #{str(i)}" for i in range(len(images))],
+            titles=[f"Click here for tasks" for i in range(len(images))],
             div_style={"display": "flex", "justify-content": "center", "flex-wrap": "wrap"},
             img_style={"margin": "1%", "height": "200px", "width": "48%"}
         )
