@@ -1,4 +1,21 @@
 import streamlit as st
+import base64
+from st_clickable_images import clickable_images
+
+images = []
+for file in ["logo.jpg", "opening.jpg"]:
+    with open(file, "rb") as image:
+        encoded = base64.b64encode(image.read()).decode()
+        images.append(f"data:image/jpeg;base64,{encoded}")
+
+clicked = clickable_images(
+    images,
+    titles=[f"Image #{str(i)}" for i in range(len(images))],
+    div_style={"display": "flex", "justify-content": "center", "flex-wrap": "wrap"},
+    img_style={"margin": "5px", "height": "200px"},
+)
+
+st.markdown(f"Image #{clicked} clicked" if clicked > -1 else "No image clicked")
 
 st.logo('logo.jpg')
 st.header('FT Local Kitchen & Bar', divider = 'grey')
