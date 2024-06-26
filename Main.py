@@ -1,23 +1,26 @@
 import streamlit as st
 import base64
 from st_clickable_images import clickable_images
-from st_pages import Page, show_pages, Section
+from st_pages import show_pages_from_config
 
 st.logo('logo.jpg')
 st.header('FT Local Kitchen & Bar', divider = 'grey')
 st.sidebar.header('FT Local Kitchen & Bar')
 
-show_pages(
-    [
-        Page("Main.py", "Home"),
-        Section("Daily Tasks"),
-        Page("pages/1_Opening_Tasks.py", "Opening Tasks", in_section=True),
-        Page("pages/2_Closing_Tasks.py", "Closing Tasks", in_section=True),
-        Section("Utilities"),
-        Page("pages/3_Inventory.py", "Inventory", in_section=True),
-        Page("pages/4_Service_Expectations.py", "Service Expectations", in_section=True),
-    ]
-)
+# show_pages(
+#     [
+#         Page("Main.py", "Home"),
+#         Section("Daily Tasks"),
+#         Page("pages/1_Opening_Tasks.py", "Opening Tasks", in_section=True),
+#         Page("pages/2_Closing_Tasks.py", "Closing Tasks", in_section=True),
+#         Section("Utilities"),
+#         Page("pages/3_Inventory.py", "Inventory", in_section=True),
+#         Page("pages/4_Service_Expectations.py", "Service Expectations", in_section=True),
+#     ]
+# )
+
+
+show_pages_from_config(".streamlit/pages_sections.toml")
 
 # Load custom CSS
 def load_css(file_name):
