@@ -36,8 +36,8 @@ def main():
   c1, c2 = st.columns(2)
   c1.markdown("<div style='text-align: center;'><b>Opening Tasks</b></div>", unsafe_allow_html=True)
   c2.markdown("<div style='text-align: center;'><b>Closing Tasks</b></div>", unsafe_allow_html=True)
-  
-  st.markdown(f"Image #{clicked} clicked" if clicked > -1 else "No image clicked")
+  if clicked > -1:
+      st.switch_page("Opening_Tasks.py") if clicked == 0 else st.switch_page("Closing_Tasks.py")
 
   st.subheader('Utilities')
   with st.container(height = 200, border = None):
