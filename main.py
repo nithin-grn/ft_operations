@@ -15,7 +15,7 @@ with st.container():
         images,
         titles=[f"Image #{str(i)}" for i in range(len(images))],
         div_style={"display": "flex", "justify-content": "center", "flex-wrap": "wrap"},
-        img_style={"margin": "1%", "height": "200px", "width": "50%"}
+        img_style={"margin": "1%", "height": "200px", "width": "48%"}
     )
 
 st.markdown(f"Image #{clicked} clicked" if clicked > -1 else "No image clicked")
