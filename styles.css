@@ -3,5 +3,6 @@ img.responsive {
     width: 100%;    /* Automatically adjust the width */
     object-fit: cover;    
     object-position: top;
+    margin: 1%;
     max-width: 100%; /* Ensure it doesn't overflow the parent container */
 }
