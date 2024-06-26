@@ -7,6 +7,19 @@ st.logo('logo.jpg')
 st.header('FT Local Kitchen & Bar', divider = 'grey')
 st.sidebar.header('FT Local Kitchen & Bar')
 
+# Load custom CSS
+def load_css(file_name):
+    with open(file_name) as f:
+        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+
+load_css('styles.css')
+
+# Function to get image data from local file
+def get_image_as_base64(file):
+    with open(file, 'rb') as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
+
 def get_clickable_images(files):
     images = []
     for file in files:
@@ -17,10 +30,13 @@ def get_clickable_images(files):
         
 
 def main():
-  with st.container(height = 200, border = None):
-    col1, col2 = st.columns([1, 3])
-    col1.image('logo.jpg')
-    col2.image('banner.jpg')
+  # Path to your local image
+  image_path = 'banner.jpg'
+  image_data = get_image_as_base64(image_path)
+  
+  # Display the image using HTML with the responsive class
+  with st.container():
+    st.markdown(f'<img src="data:image/jpeg;base64,{image_data}" alt="Responsive Image" class="responsive">', unsafe_allow_html=True)
 
   st.subheader('Daily Tasks')
   st.caption('Start your day with the opening tasks.')
