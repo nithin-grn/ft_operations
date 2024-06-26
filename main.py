@@ -11,7 +11,7 @@ for file in ["logo.jpg", "opening.jpg"]:
 # Create a container
 with st.container():
     # Display clickable images in a flexbox layout
-    clicked = st.clickable_images(
+    clicked = clickable_images(
         images,
         titles=[f"Image #{str(i)}" for i in range(len(images))],
         div_style={"display": "flex", "justify-content": "center", "flex-wrap": "wrap"},
