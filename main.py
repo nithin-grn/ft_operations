@@ -5,7 +5,6 @@ st.header('FT Local Kitchen & Bar', divider = 'grey')
 st.sidebar.header('FT Local Kitchen & Bar')
 
 def main():
-  st.button(st.image('logo.jpg'))
   with st.container(height = 200, border = None):
     col1, col2 = st.columns([1, 3])
     col1.image('logo.jpg')
