@@ -1,5 +1,7 @@
 import streamlit as st
 
+st.logo('logo.jpg')
+
 def main():
   st.header('FT Local Kitchen & Bar', divider = 'grey')
   with st.container(height = 200, border = None):
