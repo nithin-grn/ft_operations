@@ -20,8 +20,8 @@ def main():
   st.subheader('Utilities')
   with st.container(height = 200, border = None):
     col1, col2 = st.columns(2)
-    col1.image('opening.jpg', caption = 'Inventory')
-    col2.image('closing.jpg', caption = 'Service Expectations')
+    col1.image('inventory.jpg', caption = 'Inventory')
+    col2.image('service.jpeg', caption = 'Service Expectations')
 
 
 
