@@ -1,5 +1,6 @@
 img.responsive {
     height: 20vh;  /* Fixed height */
     width: 100%;    /* Automatically adjust the width */
+    object-fit: cover;    
     max-width: 100%; /* Ensure it doesn't overflow the parent container */
 }
