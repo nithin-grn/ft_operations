@@ -10,14 +10,18 @@ def main():
     col1.image('logo.jpg')
     col2.image('banner.jpg')
 
-  st.header('Daily Tasks')
+  st.subheader('Daily Tasks')
   st.caption('Start your day with the opening tasks.')
   with st.container(height = 200, border = None):
     col1, col2 = st.columns(2)
     col1.image('opening.jpg', caption = 'Opening Tasks')
     col2.image('closing.jpg', caption = 'Closing Tasks')
 
-  st.header('Utilities')
+  st.subheader('Utilities')
+  with st.container(height = 200, border = None):
+    col1, col2 = st.columns(2)
+    col1.image('opening.jpg', caption = 'Inventory')
+    col2.image('closing.jpg', caption = 'Service Expectations')
 
 
 
