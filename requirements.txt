@@ -2,3 +2,4 @@ streamlit
 pandas
 numpy
 st-clickable-images
+st-pages
