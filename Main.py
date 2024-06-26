@@ -11,11 +11,11 @@ show_pages(
     [
         Page("Main.py", "Home"),
         Section("Daily Tasks"),
-        Page("pages/1_Opening_Tasks.py", "Opening Tasks"),
-        Page("pages/2_Closing_Tasks.py", "Closing Tasks"),
+        Page("pages/1_Opening_Tasks.py", "Opening Tasks", in_section=True),
+        Page("pages/2_Closing_Tasks.py", "Closing Tasks", in_section=True),
         Section("Utilities"),
-        Page("pages/3_Inventory.py", "Inventory"),
-        Page("pages/4_Service_Expectations.py", "Service Expectations"),
+        Page("pages/3_Inventory.py", "Inventory", in_section=True),
+        Page("pages/4_Service_Expectations.py", "Service Expectations", in_section=True),
     ]
 )
 
