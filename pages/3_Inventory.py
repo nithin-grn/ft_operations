@@ -11,7 +11,7 @@ def display_categories():
       cols = st.columns(len(cat))
       for idx, col in enumerate(cols):
         col.image('logo.jpg')
-        col.button(categories[idx], use_container_width=True, type = 'Primary')
+        col.button(categories[idx], use_container_width=True, type = 'primary')
 
 if __name__ == "__main__":
   st.header('Inventory')
