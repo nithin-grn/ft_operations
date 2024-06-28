@@ -56,10 +56,10 @@ if __name__ == "__main__":
   kitchen, bar = st.tabs(['Kitchen', 'Bar'])
   with kitchen:
     display_categories(conn, 'Kitchen')
-    display_kitchen_items()
+    display_kitchen_items(conn)
   with bar:
     display_categories(conn, 'Bar')
-    display_bar_items()
+    display_bar_items(conn)
 
   
 
