@@ -17,6 +17,57 @@ def load_css(file_name):
 
 load_css('styles.css')
 
+# Add JavaScript to detect mobile view and show a message
+st.markdown("""
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        function checkScreenSize() {
+            if (window.innerWidth <= 768) {
+                document.getElementById('overlay').style.display = 'block';
+            } else {
+                document.getElementById('overlay').style.display = 'none';
+            }
+        }
+        checkScreenSize();
+        window.addEventListener('resize', checkScreenSize);
+    });
+    </script>
+    """, unsafe_allow_html=True)
+
+# Add custom CSS for the overlay message
+st.markdown("""
+    <style>
+    #overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+        text-align: center;
+        z-index: 9999;
+        display: none;
+    }
+    #overlay-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+# HTML for the overlay message
+st.markdown("""
+    <div id="overlay">
+        <div id="overlay-content">
+            <h1>Desktop Only</h1>
+            <p>This application is only available on desktop devices. Please switch to a desktop view.</p>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
 # Function to get image data from local file
 def get_image_as_base64(file):
     with open(file, 'rb') as f:
@@ -49,8 +100,8 @@ def main():
         clicked = clickable_images(
             images,
             titles=[f"Click here for tasks" for i in range(len(images))],
-            #div_style={"display": "flex", "justify-content": "center", "flex-wrap": "wrap"},
-            div_style = {"display": "flex", "flex-direction": "column", "justify-content": "center", "align-items": "center"},
+            div_style={"display": "flex", "justify-content": "center", "flex-wrap": "wrap"},
+            # div_style = {"display": "flex", "flex-direction": "column", "justify-content": "center", "align-items": "center"},
             img_style={"margin": "1%", "height": "200px", "width": "48%"}
         )
   c1, c2 = st.columns(2)
