@@ -26,26 +26,26 @@ def set_selected_category(category, type):
     else:
         st.session_state.selected_bar_category = category
 
-def display_items():
+def display_kitchen_items():
     if 'selected_kitchen_category' in st.session_state:
-        category = st.session_state.selected_kitchen_category
-        st.subheader(f'{category}', divider = 'grey')
-    elif 'selected_bar_category' in st.session_state:
-        category = st.session_state.selected_bar_category
+        kitchen_category = st.session_state.selected_kitchen_category
         st.subheader(f'{category}', divider = 'grey')
 
-def display_all(conn, type):
-  display_categories(conn, type)
-  display_items()
+def display_bar_items()
+    if 'selected_bar_category' in st.session_state:
+        category = st.session_state.selected_bar_category
+        st.subheader(f'{category}', divider = 'grey')
 
 if __name__ == "__main__":
   st.header('Inventory')
   conn = get_connection()
   kitchen, bar = st.tabs(['Kitchen', 'Bar'])
   with kitchen:
-    display_all(conn, 'Kitchen')
+    display_categories(conn, type)
+    display_kitchen_items()
   with bar:
-    display_all(conn, 'Bar')
+    display_categories(conn, type)
+    display_bar_items()
 
   
 
