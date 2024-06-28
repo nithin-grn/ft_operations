@@ -4,14 +4,14 @@ from auxillaries import *
 def split_list(input_list, chunk_size=5):
     return [input_list[i:i + chunk_size] for i in range(0, len(input_list), chunk_size)]
 
-def get_categories(conn):
-  df = get_df(conn, 'Kitchen_Inventory')
+def get_categories(conn, type):
+  df = get_df(conn, f'{type}_Inventory')
   return get_columns(df)
 
-def display_categories(conn):
+def display_categories(conn, type):
   st.subheader('Pick a Category', divider = 'grey')
   chunk_size = 5
-  categories = get_categories(conn)
+  categories = get_categories(conn, type)
   list_categories = split_list(categories, chunk_size)
   with st.container(border = True):
     for cat in list_categories:
@@ -28,10 +28,18 @@ def display_items():
         category = st.session_state.selected_category
         st.subheader(f'{category}', divider = 'grey')
 
+def display_all(conn, type):
+  display_categories(conn, type)
+  display_items()
+
 if __name__ == "__main__":
   st.header('Inventory')
   conn = get_connection()
-  display_categories(conn)
-  display_items()
+  kitchen, bar = st.tabs(['Kitchen', 'Bar'])
+  with kitchen:
+    display_all(conn, 'Kitchen')
+  with bar:
+    display_all(conn, 'Bar')
+
   
 
