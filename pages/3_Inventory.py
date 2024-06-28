@@ -9,7 +9,7 @@ def get_categories(conn, area):
   return get_columns(df)
 
 def get_items_from_category(df, category):
-    return df[category]
+    return df[category].dropna()
 
 def get_stock_dict(conn, area, category):
     df = get_df(conn, f'{area}_Inventory')
