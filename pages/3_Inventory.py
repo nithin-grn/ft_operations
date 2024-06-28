@@ -23,8 +23,12 @@ def display_items():
         category = st.session_state.selected_category
         st.subheader(f'{category}', divider = 'grey')
 
+def reset_category():
+    if 'selected_category' in st.session_state:
+        del st.session_state.selected_category
 
 if __name__ == "__main__":
+  reset_category()
   st.header('Inventory')
   display_categories()
   display_items()
