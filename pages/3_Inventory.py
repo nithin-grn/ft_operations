@@ -1,5 +1,5 @@
 import streamlit as st
-import auxillaries
+from auxillaries import *
 
 def split_list(input_list, chunk_size=5):
     return [input_list[i:i + chunk_size] for i in range(0, len(input_list), chunk_size)]
