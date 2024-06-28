@@ -9,12 +9,12 @@ st.sidebar.header('FT Local Kitchen & Bar')
 
 # show_pages_from_config(".streamlit/pages_sections.toml")
 
-# # Load custom CSS
-# def load_css(file_name):
-#     with open(file_name) as f:
-#         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+# Load custom CSS
+def load_css(file_name):
+    with open(file_name) as f:
+        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
-# load_css('styles.css')
+load_css('styles.css')
 
 # Function to get image data from local file
 def get_image_as_base64(file):
