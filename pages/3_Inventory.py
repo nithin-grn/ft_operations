@@ -8,7 +8,7 @@ def display_categories():
   chunk_size = 5
   categories = ['Apple', 'Orange', 'Mango', 'Banana', 'Guava', 'Jackie', 'Passionfruit']
   list_categories = split_list(categories, chunk_size)
-  with st.container():
+  with st.container(border = True):
     for cat in list_categories:
       cols = st.columns(chunk_size)
       for idx, c in enumerate(cat):
