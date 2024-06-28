@@ -28,7 +28,7 @@ def set_selected_category(category, area):
 
 def display_kitchen_items():
     if 'selected_kitchen_category' in st.session_state:
-        kitchen_category = st.session_state.selected_kitchen_category
+        category = st.session_state.selected_kitchen_category
         st.subheader(f'{category}', divider = 'grey')
 
 def display_bar_items():
