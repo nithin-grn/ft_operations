@@ -16,7 +16,8 @@ def display_categories():
         cols[idx].button(c, use_container_width=True, type = 'primary', key = f'btn_{c}', on_click=set_selected_category, args=(c,))
 
 def set_selected_category(category):
-    st.session_state.selected_category = category
+    if 'selected_category' not in st.session_state:
+        st.session_state.selected_category = category
 
 def display_items():
     if 'selected_category' in st.session_state:
