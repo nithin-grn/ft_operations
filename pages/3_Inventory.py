@@ -1,4 +1,5 @@
 import streamlit as st
+import auxillaries
 
 def split_list(input_list, chunk_size=5):
     return [input_list[i:i + chunk_size] for i in range(0, len(input_list), chunk_size)]
@@ -22,6 +23,7 @@ def display_items():
     if 'selected_category' in st.session_state:
         category = st.session_state.selected_category
         st.subheader(f'{category}', divider = 'grey')
+        st.dataframe(get_df())
 
 
 if __name__ == "__main__":
