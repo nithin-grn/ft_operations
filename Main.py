@@ -7,18 +7,6 @@ st.logo('logo.jpg')
 st.header('FT Local Kitchen & Bar', divider = 'grey')
 st.sidebar.header('FT Local Kitchen & Bar')
 
-# show_pages(
-#     [
-#         Page("Main.py", "Home"),
-#         Section("Daily Tasks"),
-#         Page("pages/1_Opening_Tasks.py", "Opening Tasks", in_section=True),
-#         Page("pages/2_Closing_Tasks.py", "Closing Tasks", in_section=True),
-#         Section("Utilities"),
-#         Page("pages/3_Inventory.py", "Inventory", in_section=True),
-#         Page("pages/4_Service_Expectations.py", "Service Expectations", in_section=True),
-#     ]
-# )
-
 
 show_pages_from_config(".streamlit/pages_sections.toml")
 
@@ -28,18 +16,6 @@ def load_css(file_name):
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
 load_css('styles.css')
-
-# Add custom CSS for responsive design
-st.markdown("""
-    <style>
-    @media (max-width: 768px) {
-        .stContainer img {
-            width: 100% !important;
-            margin-bottom: 10px !important;
-        }
-    }
-    </style>
-    """, unsafe_allow_html=True)
 
 # Function to get image data from local file
 def get_image_as_base64(file):
