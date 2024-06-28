@@ -4,24 +4,24 @@ from auxillaries import *
 def split_list(input_list, chunk_size=5):
     return [input_list[i:i + chunk_size] for i in range(0, len(input_list), chunk_size)]
 
-def get_categories(conn, type):
-  df = get_df(conn, f'{type}_Inventory')
+def get_categories(conn, area):
+  df = get_df(conn, f'{area}_Inventory')
   return get_columns(df)
 
-def display_categories(conn, type):
+def display_categories(conn, area):
   st.subheader('Pick a Category', divider = 'grey')
   chunk_size = 5
-  categories = get_categories(conn, type)
+  categories = get_categories(conn, area)
   list_categories = split_list(categories, chunk_size)
   with st.container(border = True):
     for cat in list_categories:
       cols = st.columns(chunk_size)
       for idx, c in enumerate(cat):
         cols[idx].image('logo.jpg')
-        cols[idx].button(c, use_container_width=True, type = 'primary', key = f'btn_{c}', on_click=set_selected_category, args=(c, type))
+        cols[idx].button(c, use_container_width=True, type = 'primary', key = f'btn_{c}', on_click=set_selected_category, args=(c, area))
 
-def set_selected_category(category, type):
-    if type == 'Kitchen':
+def set_selected_category(category, area):
+    if area == 'Kitchen':
         st.session_state.selected_kitchen_category = category
     else:
         st.session_state.selected_bar_category = category
@@ -41,10 +41,10 @@ if __name__ == "__main__":
   conn = get_connection()
   kitchen, bar = st.tabs(['Kitchen', 'Bar'])
   with kitchen:
-    display_categories(conn, type)
+    display_categories(conn, area)
     display_kitchen_items()
   with bar:
-    display_categories(conn, type)
+    display_categories(conn, area)
     display_bar_items()
 
   
