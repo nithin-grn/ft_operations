@@ -3,3 +3,4 @@ pandas
 numpy
 st-clickable-images
 st-pages
+st-gsheets-connection
