@@ -16,7 +16,7 @@ def get_stock_dict(conn, area, category):
     items = get_items_from_category(df, category)
     stock_dict = {}
     for item in items:
-        status = st.selectbox(options = ['In stock', 'Low in stock', 'Out of stock'], index=None, placeholder="Current Stock level...", label_visibility = "collapsed")
+        status = st.selectbox('Current Stock Level', options = ['In stock', 'Low in stock', 'Out of stock'], index=None, placeholder="Stock level...", label_visibility = "collapsed")
         stock_dict[item] = status
     return stock_dict
 
