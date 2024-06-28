@@ -41,10 +41,10 @@ if __name__ == "__main__":
   conn = get_connection()
   kitchen, bar = st.tabs(['Kitchen', 'Bar'])
   with kitchen:
-    display_categories(conn, area)
+    display_categories(conn, 'Kitchen')
     display_kitchen_items()
   with bar:
-    display_categories(conn, area)
+    display_categories(conn, 'Bar')
     display_bar_items()
 
   
