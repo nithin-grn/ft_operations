@@ -16,20 +16,15 @@ def display_categories():
         cols[idx].button(c, use_container_width=True, type = 'primary', key = f'btn_{c}', on_click=set_selected_category, args=(c,))
 
 def set_selected_category(category):
-    if 'selected_category' not in st.session_state:
-        st.session_state.selected_category = category
+    st.session_state.selected_category = category
 
 def display_items():
     if 'selected_category' in st.session_state:
         category = st.session_state.selected_category
         st.subheader(f'{category}', divider = 'grey')
 
-def reset_category():
-    if 'selected_category' in st.session_state:
-        del st.session_state.selected_category
 
 if __name__ == "__main__":
-  reset_category()
   st.header('Inventory')
   display_categories()
   display_items()
