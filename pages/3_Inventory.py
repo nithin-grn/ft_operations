@@ -18,14 +18,20 @@ def display_categories(conn, type):
       cols = st.columns(chunk_size)
       for idx, c in enumerate(cat):
         cols[idx].image('logo.jpg')
-        cols[idx].button(c, use_container_width=True, type = 'primary', key = f'btn_{c}', on_click=set_selected_category, args=(c,))
+        cols[idx].button(c, use_container_width=True, type = 'primary', key = f'btn_{c}', on_click=set_selected_category, args=(c, type))
 
-def set_selected_category(category):
-    st.session_state.selected_category = category
+def set_selected_category(category, type):
+    if type == 'Kitchen':
+        st.session_state.selected_kitchen_category = category
+    else:
+        st.session_state.selected_bar_category = category
 
 def display_items():
-    if 'selected_category' in st.session_state:
-        category = st.session_state.selected_category
+    if 'selected_kitchen_category' in st.session_state:
+        category = st.session_state.selected_kitchen_category
+        st.subheader(f'{category}', divider = 'grey')
+    elif 'selected_bar_category' in st.session_state:
+        category = st.session_state.selected_bar_category
         st.subheader(f'{category}', divider = 'grey')
 
 def display_all(conn, type):
