@@ -29,6 +29,18 @@ def load_css(file_name):
 
 load_css('styles.css')
 
+# Add custom CSS for responsive design
+st.markdown("""
+    <style>
+    @media (max-width: 768px) {
+        .clickable-image {
+            width: 100% !important;
+            margin-bottom: 10px !important;
+        }
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
 # Function to get image data from local file
 def get_image_as_base64(file):
     with open(file, 'rb') as f:
