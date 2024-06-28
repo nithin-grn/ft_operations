@@ -13,13 +13,19 @@ def display_categories():
       cols = st.columns(chunk_size)
       for idx, c in enumerate(cat):
         cols[idx].image('logo.jpg')
-        cols[idx].button(c, use_container_width=True, type = 'primary', key = f'btn_{c}', on_click = display_items, kwargs = {'category': c})
+        cols[idx].button(c, use_container_width=True, type = 'primary', key = f'btn_{c}', on_click=set_selected_category, args=(c,))
 
-def display_items(category):
-  st.write(f'{category}\'s items')
+def set_selected_category(category):
+    st.session_state.selected_category = category
+
+def display_items():
+    if 'selected_category' in st.session_state:
+        category = st.session_state.selected_category
+        st.write(f'{category}\'s items')
 
 if __name__ == "__main__":
   st.header('Inventory')
   display_categories()
+  display_items()
   
 
