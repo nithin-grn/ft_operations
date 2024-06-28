@@ -33,7 +33,7 @@ load_css('styles.css')
 st.markdown("""
     <style>
     @media (max-width: 768px) {
-        .clickable-image {
+        .stContainer img {
             width: 100% !important;
             margin-bottom: 10px !important;
         }
