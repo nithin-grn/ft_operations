@@ -45,7 +45,7 @@ def display_kitchen_items(conn):
         category = st.session_state.selected_kitchen_category
         st.subheader(f'{category}', divider = 'grey')
         stock_dict = get_stock_dict(conn, 'Kitchen', category)
-        if st.button('Submit', key = 'kitchen_submit'):
+        if st.button('Submit', key = 'kitchen_submit', type = 'primary', use_container_width = True):
             st.write(stock_dict)
 
 def display_bar_items(conn):
@@ -53,7 +53,7 @@ def display_bar_items(conn):
         category = st.session_state.selected_bar_category
         st.subheader(f'{category}', divider = 'grey')
         stock_dict = get_stock_dict(conn, 'Bar', category)
-        if st.button('Submit', key = 'bar_submit'):
+        if st.button('Submit', key = 'bar_submit', type = 'primary', use_container_width = True):
             st.write(stock_dict)
 
 if __name__ == "__main__":
