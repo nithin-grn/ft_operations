@@ -16,8 +16,9 @@ def get_stock_dict(conn, area, category):
     items = get_items_from_category(df, category)
     stock_dict = {}
     for item in items:
-        st.write(item)
-        status = st.selectbox('Current Stock Level', options = ['In stock', 'Low in stock', 'Out of stock'], index=None, placeholder="Stock level...", label_visibility = "collapsed", key = f'{area}-{item}')
+        c1, c2 = st.columns(2)
+        c1.write(item)
+        status = c2.selectbox('Current Stock Level', options = ['In stock', 'Low in stock', 'Out of stock'], index=None, placeholder="Stock level...", label_visibility = "collapsed", key = f'{area}-{item}')
         stock_dict[item] = status
     return stock_dict
 
@@ -44,12 +45,16 @@ def display_kitchen_items(conn):
         category = st.session_state.selected_kitchen_category
         st.subheader(f'{category}', divider = 'grey')
         stock_dict = get_stock_dict(conn, 'Kitchen', category)
+        if st.button('Submit', key = 'kitchen_submit'):
+            st.write(stock_dict)
 
 def display_bar_items(conn):
     if 'selected_bar_category' in st.session_state:
         category = st.session_state.selected_bar_category
         st.subheader(f'{category}', divider = 'grey')
         stock_dict = get_stock_dict(conn, 'Bar', category)
+        if st.button('Submit', key = 'bar_submit'):
+            st.write(stock_dict)
 
 if __name__ == "__main__":
   st.header('Inventory')
