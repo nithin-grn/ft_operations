@@ -49,7 +49,8 @@ def main():
         clicked = clickable_images(
             images,
             titles=[f"Click here for tasks" for i in range(len(images))],
-            div_style={"display": "flex", "justify-content": "center", "flex-wrap": "wrap"},
+            #div_style={"display": "flex", "justify-content": "center", "flex-wrap": "wrap"},
+            div_style = {"display": "flex", "flex-direction": "column", "justify-content": "center", "align-items": "center"},
             img_style={"margin": "1%", "height": "200px", "width": "48%"}
         )
   c1, c2 = st.columns(2)
