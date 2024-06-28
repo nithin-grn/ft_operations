@@ -31,7 +31,7 @@ def display_kitchen_items():
         kitchen_category = st.session_state.selected_kitchen_category
         st.subheader(f'{category}', divider = 'grey')
 
-def display_bar_items()
+def display_bar_items():
     if 'selected_bar_category' in st.session_state:
         category = st.session_state.selected_bar_category
         st.subheader(f'{category}', divider = 'grey')
