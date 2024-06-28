@@ -7,66 +7,14 @@ st.logo('logo.jpg')
 st.header('FT Local Kitchen & Bar', divider = 'grey')
 st.sidebar.header('FT Local Kitchen & Bar')
 
+# show_pages_from_config(".streamlit/pages_sections.toml")
 
-show_pages_from_config(".streamlit/pages_sections.toml")
+# # Load custom CSS
+# def load_css(file_name):
+#     with open(file_name) as f:
+#         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
-# Load custom CSS
-def load_css(file_name):
-    with open(file_name) as f:
-        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
-
-load_css('styles.css')
-
-# Add JavaScript to detect mobile view and show a message
-st.markdown("""
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        function checkScreenSize() {
-            if (window.innerWidth <= 768) {
-                document.getElementById('overlay').style.display = 'block';
-            } else {
-                document.getElementById('overlay').style.display = 'none';
-            }
-        }
-        checkScreenSize();
-        window.addEventListener('resize', checkScreenSize);
-    });
-    </script>
-    """, unsafe_allow_html=True)
-
-# Add custom CSS for the overlay message
-st.markdown("""
-    <style>
-    #overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.8);
-        color: white;
-        text-align: center;
-        z-index: 9999;
-        display: none;
-    }
-    #overlay-content {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-    </style>
-    """, unsafe_allow_html=True)
-
-# HTML for the overlay message
-st.markdown("""
-    <div id="overlay">
-        <div id="overlay-content">
-            <h1>Desktop Only</h1>
-            <p>This application is only available on desktop devices. Please switch to a desktop view.</p>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+# load_css('styles.css')
 
 # Function to get image data from local file
 def get_image_as_base64(file):
