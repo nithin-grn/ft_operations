@@ -20,5 +20,5 @@ if __name__ == "__main__":
   st.header('Inventory')
   display_categories()
   
-  def display_items(category):
-    st.write(f'{category}\'s items')
+def display_items(category):
+  st.write(f'{category}\'s items')
