@@ -15,8 +15,8 @@ def display_categories():
         cols[idx].image('logo.jpg')
         cols[idx].button(c, use_container_width=True, type = 'primary', key = f'btn_{c}', on_click = display_items, kwargs = {'category': c})
 
-def display_items():
-  st.write(f'{c}\'s items')
+def display_items(category):
+  st.write(f'{category}\'s items')
 
 if __name__ == "__main__":
   st.header('Inventory')
