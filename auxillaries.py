@@ -1,5 +1,16 @@
 import streamlit as st
 from streamlit_gsheets import GSheetsConnection
+from datetime import datetime
+
+def today_date_string():
+  today = datetime.today()
+  today_str = today.strftime('%d-%m-%Y')
+  return today_str
+
+def what_day(string_date):
+  date_obj = datetime.strptime(string_date, '%d-%m-%Y')
+  day_of_week = today.strftime('%A')
+  return day_of_week
 
 def get_connection():
   # Create a connection object.
