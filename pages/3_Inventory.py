@@ -4,10 +4,6 @@ from auxillaries import *
 def split_list(input_list, chunk_size=5):
     return [input_list[i:i + chunk_size] for i in range(0, len(input_list), chunk_size)]
 
-def get_categories(conn, area):
-  df = get_df(conn, f'{area}_Inventory')
-  return get_columns(df)
-
 def get_items_from_category(df, category):
     return df[category].dropna()
 
@@ -25,7 +21,8 @@ def get_stock_dict(conn, area, category):
 def display_categories(conn, area):
   st.subheader('Pick a Category', divider = 'grey')
   chunk_size = 5
-  categories = get_categories(conn, area)
+  df = get_df(conn, f'{area}_Inventory')
+  categories = get_columns(df)
   list_categories = split_list(categories, chunk_size)
   with st.container(border = True):
     for cat in list_categories:
@@ -46,7 +43,11 @@ def display_kitchen_items(conn):
         st.subheader(f'{category}', divider = 'grey')
         stock_dict = get_stock_dict(conn, 'Kitchen', category)
         if st.button('Submit', key = 'kitchen_submit', type = 'primary', use_container_width = True):
-            st.write(stock_dict)
+            with st.status('Updating...'):
+                df = get_df(conn, f'{area}_Stock')
+                dates = get_columns(df)[1:]
+                st.dataframe(df)
+                st.write(dates)                
 
 def display_bar_items(conn):
     if 'selected_bar_category' in st.session_state:
