@@ -33,7 +33,8 @@ def get_clickable_images(files):
 
 def reminders():
   day = what_day(today_date_string())
-  st.info(day)
+  if day in ['Wednesday', 'Sunday']:
+      st.info('Reminders ⚠️ \n Please ensure to update the Inventory today.')
         
 
 def main():
