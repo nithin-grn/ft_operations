@@ -62,7 +62,7 @@ def display_kitchen_items(conn):
                 else:
                   df[today] = None
                   df[today] = df['Items'].map(stock_dict).fillna(df[today])
-                st.dataframe(df)
+                update_worksheet(conn, 'Kitchen_Stock', df)
 
 def display_bar_items(conn):
     if 'selected_bar_category' in st.session_state:
