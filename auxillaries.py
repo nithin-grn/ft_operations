@@ -9,7 +9,7 @@ def today_date_string():
 
 def what_day(string_date):
   date_obj = datetime.strptime(string_date, '%d-%m-%Y')
-  day_of_week = today.strftime('%A')
+  day_of_week = date_obj.strftime('%A')
   return day_of_week
 
 def get_connection():
