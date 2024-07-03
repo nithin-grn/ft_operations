@@ -1,20 +1,28 @@
 import streamlit as st
 from auxillaries import *
 
+today = today_date_string()
+
 def split_list(input_list, chunk_size=5):
     return [input_list[i:i + chunk_size] for i in range(0, len(input_list), chunk_size)]
 
 def get_items_from_category(df, category):
     return df[category].dropna()
 
+def get_existing_stock(conn, area):
+    return get_df(conn, f'{area}_Stock')
+
 def get_stock_dict(conn, area, category):
     df = get_df(conn, f'{area}_Inventory')
     items = get_items_from_category(df, category)
     stock_dict = {}
+    existing_df = get_existing_stock(conn, area)
+    existing_dates = get_existing_dates(existing_df) 
     for item in items:
         c1, c2 = st.columns(2)
         c1.write(item)
-        status = c2.selectbox('Current Stock Level', options = ['In stock', 'Low in stock', 'Out of stock'], index=None, placeholder="Stock level...", label_visibility = "collapsed", key = f'{area}-{item}')
+        default_index = existing_df[item, today].value if today in existing_dates else None
+        status = c2.selectbox('Current Stock Level', options = ['In stock', 'Low in stock', 'Out of stock'], index=default_index, placeholder="Stock level...", label_visibility = "collapsed", key = f'{area}-{item}')
         stock_dict[item] = status
     return stock_dict
 
@@ -37,6 +45,9 @@ def set_selected_category(category, area):
     else:
         st.session_state.selected_bar_category = category
 
+def get_existing_dates(df):
+    return get_columns(df)[1:]
+
 def display_kitchen_items(conn):
     if 'selected_kitchen_category' in st.session_state:
         category = st.session_state.selected_kitchen_category
@@ -45,8 +56,7 @@ def display_kitchen_items(conn):
         if st.button('Submit', key = 'kitchen_submit', type = 'primary', use_container_width = True):
             with st.status('Updating...'):
                 df = get_df(conn, f'Kitchen_Stock')
-                dates = get_columns(df)[1:]
-                today = today_date_string()
+                dates = get_existing_dates(df)
                 if today in dates:
                   df[today] = df['Items'].map(stock_dict).fillna(df[today])
                 else:
