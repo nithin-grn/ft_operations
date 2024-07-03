@@ -24,7 +24,11 @@ def get_stock_dict(conn, area, category):
     for item in items:
         c1, c2 = st.columns(2)
         c1.write(item)
-        default_index = options.index(str(existing_df.loc[existing_df['Items'] == item, today].iloc[0]).strip()) if today in existing_dates else None
+        default_index = None
+        if today in existing_dates:
+            value = existing_df.loc[existing_df['Items'] == item, today].iloc[0]
+            if value:
+                default_index = options.index(value)
         st.write(default_index)
         status = c2.selectbox('Current Stock Level', options = options , index=default_index, placeholder="Stock level...", label_visibility = "collapsed", key = f'{area}-{item}')
         stock_dict[item] = status
