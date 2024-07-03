@@ -2,6 +2,7 @@ import streamlit as st
 import base64
 from st_clickable_images import clickable_images
 from st_pages import show_pages_from_config
+from auxillaries import *
 
 st.logo('logo.jpg')
 st.header('FT Local Kitchen & Bar', divider = 'grey')
@@ -29,6 +30,10 @@ def get_clickable_images(files):
             encoded = base64.b64encode(image.read()).decode()
             images.append(f"data:image/jpeg;base64,{encoded}")
     return images
+
+def reminders():
+  day = which_day(today_date_string())
+  st.info(day)
         
 
 def main():
@@ -40,6 +45,8 @@ def main():
   with st.container():
     st.markdown(f'<img src="data:image/jpeg;base64,{image_data}" alt="Responsive Image" class="responsive">', unsafe_allow_html=True)
 
+  reminders()
+  
   st.subheader('Daily Tasks')
   st.caption('Start your day with the opening tasks.')
   images = get_clickable_images(['opening.jpg', 'closing.jpg'])
