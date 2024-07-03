@@ -46,8 +46,13 @@ def display_kitchen_items(conn):
             with st.status('Updating...'):
                 df = get_df(conn, f'Kitchen_Stock')
                 dates = get_columns(df)[1:]
+                today = today_date_string()
+                if today in dates:
+                  df[today] = df['Item'].map(stock_dict).fillna(df[today])
+                else:
+                  df[today] = None
+                  df[today] = df['Item'].map(stock_dict).fillna(df[today])
                 st.dataframe(df)
-                st.write(dates)                
 
 def display_bar_items(conn):
     if 'selected_bar_category' in st.session_state:
