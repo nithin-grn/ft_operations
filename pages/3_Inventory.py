@@ -2,6 +2,7 @@ import streamlit as st
 from auxillaries import *
 
 today = today_date_string()
+options = ['In stock', 'Low in stock', 'Out of stock']
 
 def split_list(input_list, chunk_size=5):
     return [input_list[i:i + chunk_size] for i in range(0, len(input_list), chunk_size)]
@@ -21,8 +22,8 @@ def get_stock_dict(conn, area, category):
     for item in items:
         c1, c2 = st.columns(2)
         c1.write(item)
-        default_index = existing_df[item, today].value if today in existing_dates else None
-        status = c2.selectbox('Current Stock Level', options = ['In stock', 'Low in stock', 'Out of stock'], index=default_index, placeholder="Stock level...", label_visibility = "collapsed", key = f'{area}-{item}')
+        default_index = options.index(str(existing_df[item, today].value).strip()) if today in existing_dates else None
+        status = c2.selectbox('Current Stock Level', options = , index=default_index, placeholder="Stock level...", label_visibility = "collapsed", key = f'{area}-{item}')
         stock_dict[item] = status
     return stock_dict
 
