@@ -22,7 +22,6 @@ def get_stock_dict(conn, area, category):
     existing_dates = get_existing_dates(existing_df) 
     st.write(existing_df)
     st.write(existing_dates)
-    status = st.selectbox('Current Stock Level', options = options , index=1, label_visibility = "collapsed")
 
     for item in items:
         c1, c2 = st.columns(2)
@@ -33,7 +32,7 @@ def get_stock_dict(conn, area, category):
             if pd.notna(value):
                 default_index = options.index(value)
         st.write(default_index)
-        status = c2.selectbox('Current Stock Level', options = options , index=default_index, label_visibility = "collapsed", key = f'{area}-{item}')
+        status = c2.selectbox('Current Stock Level', options = options , index = 1, label_visibility = "collapsed", key = f'{area}-{item}')
         stock_dict[item] = status
     return stock_dict
 
