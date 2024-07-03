@@ -32,7 +32,7 @@ def get_clickable_images(files):
     return images
 
 def reminders():
-  day = which_day(today_date_string())
+  day = what_day(today_date_string())
   st.info(day)
         
 
