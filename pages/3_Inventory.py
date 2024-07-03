@@ -1,5 +1,6 @@
 import streamlit as st
 from auxillaries import *
+import pandas as pd
 
 today = today_date_string()
 options = ['In stock', 'Low in stock', 'Out of stock']
@@ -27,7 +28,7 @@ def get_stock_dict(conn, area, category):
         default_index = None
         if today in existing_dates:
             value = existing_df.loc[existing_df['Items'] == item, today].iloc[0]
-            if value:
+            if pd.notna(value):
                 default_index = options.index(value)
         st.write(default_index)
         status = c2.selectbox('Current Stock Level', options = options , index=default_index, placeholder="Stock level...", label_visibility = "collapsed", key = f'{area}-{item}')
