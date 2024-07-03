@@ -44,7 +44,7 @@ def display_kitchen_items(conn):
         stock_dict = get_stock_dict(conn, 'Kitchen', category)
         if st.button('Submit', key = 'kitchen_submit', type = 'primary', use_container_width = True):
             with st.status('Updating...'):
-                df = get_df(conn, f'{area}_Stock')
+                df = get_df(conn, f'Kitchen_Stock')
                 dates = get_columns(df)[1:]
                 st.dataframe(df)
                 st.write(dates)                
