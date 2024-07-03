@@ -48,10 +48,10 @@ def display_kitchen_items(conn):
                 dates = get_columns(df)[1:]
                 today = today_date_string()
                 if today in dates:
-                  df[today] = df['Item'].map(stock_dict).fillna(df[today])
+                  df[today] = df['Items'].map(stock_dict).fillna(df[today])
                 else:
                   df[today] = None
-                  df[today] = df['Item'].map(stock_dict).fillna(df[today])
+                  df[today] = df['Items'].map(stock_dict).fillna(df[today])
                 st.dataframe(df)
 
 def display_bar_items(conn):
