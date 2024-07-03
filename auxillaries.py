@@ -20,7 +20,7 @@ def get_connection():
 def get_df(conn, sheet_name):
   df = conn.read(
       worksheet=sheet_name,
-      ttl="10m"
+      # ttl="10m"
   )
   return df
 
