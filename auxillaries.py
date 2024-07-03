@@ -26,3 +26,9 @@ def get_df(conn, sheet_name):
 
 def get_columns(df):
   return df.columns.tolist()
+
+def update_worksheet(conn, wsheet, df):
+  conn.update(
+            worksheet=wsheet,
+            data=df,
+        )
