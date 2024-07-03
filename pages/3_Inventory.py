@@ -31,7 +31,7 @@ def get_stock_dict(conn, area, category):
             if pd.notna(value):
                 default_index = options.index(value)
         st.write(default_index)
-        status = c2.selectbox('Current Stock Level', options = options , index=default_index, placeholder="Stock level...", label_visibility = "collapsed", key = f'{area}-{item}')
+        status = c2.selectbox('Current Stock Level', options = options , index=default_index, label_visibility = "collapsed", key = f'{area}-{item}')
         stock_dict[item] = status
     return stock_dict
 
