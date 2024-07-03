@@ -22,6 +22,8 @@ def get_stock_dict(conn, area, category):
     existing_dates = get_existing_dates(existing_df) 
     st.write(existing_df)
     st.write(existing_dates)
+    status = st.selectbox('Current Stock Level', options = options , index=1, label_visibility = "collapsed")
+
     for item in items:
         c1, c2 = st.columns(2)
         c1.write(item)
