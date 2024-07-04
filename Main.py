@@ -8,7 +8,6 @@ st.logo('logo.jpg')
 st.header('FT Local Kitchen & Bar', divider = 'grey')
 st.sidebar.header('FT Local Kitchen & Bar')
 
-check_reminders()
 reminders = []
 
       
@@ -92,7 +91,7 @@ def main():
       st.switch_page("pages/3_Inventory.py") if clicked == 0 else (st.switch_page("pages/4_Service_Expectations.py") if clicked == 1 else None)
 
 
-
+check_reminders()
 
 if __name__ == "__main__":
   main()
