@@ -94,5 +94,11 @@ def main():
 
 check_reminders()
 
+@st.experimental_dialog("Today's reminders 🙂")
+def disp_reminders():
+    display_reminders()
+    if st.button("Okay"):
+        st.rerun()
+
 if __name__ == "__main__":
   main()
