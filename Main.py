@@ -41,9 +41,10 @@ def inv_reminder():
     reminders.append('Please ensure to update the inventory today.')
 
 def display_reminders():
-  with st.expander('Reminders ⚠️', expanded = True):
-    st.info('\n\n'.join(reminders))
-        
+  if len(reminders) > 0:
+    with st.expander('Reminders ⚠️', expanded = True):
+      st.info('\n\n'.join(reminders))
+              
 
 def main():
   # Path to your local image
