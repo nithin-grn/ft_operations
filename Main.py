@@ -8,7 +8,7 @@ st.logo('logo.jpg')
 st.header('FT Local Kitchen & Bar', divider = 'grey')
 st.sidebar.header('FT Local Kitchen & Bar')
 
-reminders = []
+reminders = ['Yes']
 
       
 # Load custom CSS
@@ -37,8 +37,8 @@ def check_reminders():
 
 def inv_reminder():
   day = what_day(today_date_string())
-  if day in ['Wednesday', 'Sunday']:
-    reminders.append('Please ensure to update the inventory today.')
+  # if day in ['Wednesday', 'Sunday']:
+  reminders.append('Please ensure to update the inventory today.')
 
 def display_reminders():
   if len(reminders) > 0:
