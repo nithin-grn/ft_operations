@@ -37,8 +37,8 @@ def check_reminders():
 
 def inv_reminder():
   day = what_day(today_date_string())
-  if day in ['Wednesday', 'Sunday']:
-    reminders.append('Please ensure to update the inventory today.')
+  # if day in ['Wednesday', 'Sunday']:
+  reminders.append('Please ensure to update the inventory today.')
 
 def display_reminders():
   if len(reminders) > 0:
@@ -102,6 +102,6 @@ def disp_reminders():
         st.rerun()
 
 if __name__ == "__main__":
-  if "saw" not in st.session_state:
+  if "saw" not in st.session_state and len(reminders) > 0:
         disp_reminders()
   main()
