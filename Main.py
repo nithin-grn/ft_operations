@@ -8,8 +8,10 @@ st.logo('logo.jpg')
 st.header('FT Local Kitchen & Bar', divider = 'grey')
 st.sidebar.header('FT Local Kitchen & Bar')
 
-# show_pages_from_config(".streamlit/pages_sections.toml")
+check_reminders()
+reminders = []
 
+      
 # Load custom CSS
 def load_css(file_name):
     with open(file_name) as f:
@@ -31,11 +33,17 @@ def get_clickable_images(files):
             images.append(f"data:image/jpeg;base64,{encoded}")
     return images
 
-def reminders():
+def check_reminders():
+  inv_reminder()
+
+def inv_reminder():
   day = what_day(today_date_string())
   if day in ['Wednesday', 'Sunday']:
-      with st.expander('Reminders ⚠️', expanded = True):
-          st.info('Please ensure to update the Inventory today.')
+    reminders.append('Please ensure to update the inventory today.')
+
+def display_reminders():
+  with st.expander('Reminders ⚠️', expanded = True):
+    st.info('\n\n'.join(reminders))
         
 
 def main():
@@ -47,7 +55,7 @@ def main():
   with st.container():
     st.markdown(f'<img src="data:image/jpeg;base64,{image_data}" alt="Responsive Image" class="responsive">', unsafe_allow_html=True)
 
-  reminders()
+  display_reminders()
   
   st.subheader('Daily Tasks')
   st.caption('Start your day with the opening tasks.')
