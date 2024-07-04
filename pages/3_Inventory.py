@@ -55,29 +55,39 @@ def set_selected_category(category, area):
 def get_existing_dates(df):
     return get_columns(df)[1:]
 
+def submit_stock(conn, area, stock_dict):
+  with st.status('Updating...', expanded = True) as status:
+    df = get_df(conn, f'{area}_Stock')
+    dates = get_existing_dates(df)
+    if today in dates:
+      df[today] = df['Items'].map(stock_dict).fillna(df[today])
+    else:
+      df[today] = None
+      df[today] = df['Items'].map(stock_dict).fillna(df[today])
+    update_worksheet(conn, '{area}_Stock', df)
+    status.update(label="Successfully submitted!", state="complete", expanded=False)
+
 def display_kitchen_items(conn):
     if 'selected_kitchen_category' in st.session_state:
-        category = st.session_state.selected_kitchen_category
-        st.subheader(f'{category}', divider = 'grey')
-        stock_dict = get_stock_dict(conn, 'Kitchen', category)
+      category = st.session_state.selected_kitchen_category
+      st.subheader(f'{category}', divider = 'grey')
+      stock_dict = get_stock_dict(conn, 'Kitchen', category)
+      if len(stock_dict) > 0:
         if st.button('Submit', key = 'kitchen_submit', type = 'primary', use_container_width = True):
-            with st.status('Updating...'):
-                df = get_df(conn, f'Kitchen_Stock')
-                dates = get_existing_dates(df)
-                if today in dates:
-                  df[today] = df['Items'].map(stock_dict).fillna(df[today])
-                else:
-                  df[today] = None
-                  df[today] = df['Items'].map(stock_dict).fillna(df[today])
-                update_worksheet(conn, 'Kitchen_Stock', df)
+            submit_stock(conn, 'Kitchen', stock_dict)
+      else:
+        st.info('No items listed in this category')
 
 def display_bar_items(conn):
     if 'selected_bar_category' in st.session_state:
-        category = st.session_state.selected_bar_category
-        st.subheader(f'{category}', divider = 'grey')
-        stock_dict = get_stock_dict(conn, 'Bar', category)
+      category = st.session_state.selected_bar_category
+      st.subheader(f'{category}', divider = 'grey')
+      stock_dict = get_stock_dict(conn, 'Bar', category)
+      if len(stock_dict) > 0:
         if st.button('Submit', key = 'bar_submit', type = 'primary', use_container_width = True):
-            st.write(stock_dict)
+            submit_stock(conn, 'Bar', stock_dict)
+      else:
+        st.info('No items listed in this category')
 
 if __name__ == "__main__":
   st.header('Inventory')
