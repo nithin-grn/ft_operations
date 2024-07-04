@@ -98,7 +98,10 @@ check_reminders()
 def disp_reminders():
     display_reminders()
     if st.button("Okay"):
+        st.session_state.saw = True
         st.rerun()
 
 if __name__ == "__main__":
+  if "saw" not in st.session_state:
+        disp_reminders()
   main()
