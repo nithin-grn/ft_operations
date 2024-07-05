@@ -64,7 +64,7 @@ def submit_stock(conn, area, stock_dict):
     else:
       df[today] = None
       df[today] = df['Items'].map(stock_dict).fillna(df[today])
-    update_worksheet(conn, '{area}_Stock', df)
+    update_worksheet(conn, f'{area}_Stock', df)
     status.update(label="Successfully submitted!", state="complete", expanded=False)
 
 def display_kitchen_items(conn):
