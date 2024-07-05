@@ -20,7 +20,7 @@ def get_stock_dict(conn, area, category):
     stock_dict = {}
     existing_df = get_existing_stock(conn, area)
     existing_dates = get_existing_dates(existing_df) 
-
+    st.write(existing_dates, today)
     for item in items:
         c1, c2 = st.columns(2)
         c1.write(item)
