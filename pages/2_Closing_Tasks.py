@@ -47,7 +47,7 @@ def check_completion(df, time):
 def day_reports():
   st.subheader('EOD Report', divider = 'grey')
   st.warning('Done for the day?')
-  with container(border = True):
+  with st.container(border = True):
     today_sales = st.number_input('Enter today\'s sales in $:', minimum = 0.0)
     comp_sales = st.number_input('Enter same day last week\'s sales in $:', minimum = 0.0)
     bookings = st.number_input('Number of bookings/Table reservations made today:', minimum = 0)
