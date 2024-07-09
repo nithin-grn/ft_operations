@@ -69,7 +69,7 @@ def main():
 
   display_reminders()
 
-	st.subheader('Daily Tasks')
+  st.subheader('Daily Tasks')
 	st.caption('Start your day with the opening tasks.')
   c1, c2 = st.columns(2)
 	with c1:
