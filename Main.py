@@ -8,7 +8,7 @@ st.logo('logo.jpg')
 st.header('FT Local Kitchen & Bar', divider = 'grey')
 st.sidebar.header('FT Local Kitchen & Bar')
 
-st.set_page_config(page_title="FT Operations")
+
 
 reminders = []
 
@@ -107,5 +107,6 @@ if __name__ == "__main__":
   if "saw" not in st.session_state and len(reminders) > 0:
         disp_reminders()
   pg = st.navigation([st.Page("pages/1_Opening_Tasks.py"), st.Page("pages/2_Closing_Tasks.py"), st.Page("pages/4_Service_Expectations.py")])
+  st.set_page_config(page_title="FT Operations")
   pg.run()
   main()
