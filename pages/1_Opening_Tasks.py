@@ -35,7 +35,7 @@ def display_tasks(df, tasks, time):
     else:
       break
 
-def check_completion(df):
+def check_completion(df, time):
   today = today_date_string()
   if today in list(df['Date'].values):
     if df.loc[df['Date'] == today, time] == 'Done':
@@ -46,6 +46,6 @@ if __name__ == "__main__":
   st.header('Opening Tasks')
   conn = get_connection()
   df = get_df(conn, "Activities")
-  check_completion(df)
+  check_completion(df, 'Opening Tasks')
   tasks = get_tasks('opening.txt')
   display_tasks(df, tasks, 'Opening Tasks')
