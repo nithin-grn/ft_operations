@@ -9,7 +9,7 @@ def display_tasks(tasks):
   for task in tasks:
     with st.container(border = True):
       name, description = task.split('-')
-      checked = st.checkbox(f":rainbow-background[{name}]")
+      checked = st.checkbox(f":red-background[{name}]")
       st.write(description)
     if checked:
       continue
