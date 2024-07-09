@@ -72,10 +72,10 @@ def main():
   st.subheader('Daily Tasks')
   st.caption('Start your day with the opening tasks.')
   c1, c2 = st.columns(2)
-	with c1:
+  with c1:
     st.image('opening.jpg')
     st.page_link("pages/1_Opening_Tasks.py", label="Opening Tasks", icon="🌅", use_container_width = True)
-	with c2:
+  with c2:
     st.image('closing.jpg')
     st.page_link("pages/1_Closing_Tasks.py", label="Closing Tasks", icon="🌇", use_container_width = True)
   
