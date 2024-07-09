@@ -22,7 +22,6 @@ def submit_update(df, time):
     st.success("Submitted!")
 
 def display_tasks(df, tasks, time):
-  st.subheader('Tasks', divider = 'grey')
   for idx, task in enumerate(tasks):
     with st.container(border = True):
       name, description = task.split('-')
@@ -37,6 +36,7 @@ def display_tasks(df, tasks, time):
       break
 
 def check_completion(df, time):
+  st.subheader('Tasks', divider = 'grey')
   today = today_date_string()
   if today in list(df['Date'].values):
     if df.loc[df['Date'] == today, time][0] == 'Done':
