@@ -17,7 +17,7 @@ def display_tasks(tasks):
     name, description = task.split('-')
     st.subheader(f"Task {idx + 1}: {name.strip()}")
     st.write(f"{description}")
-    if st.button("Done"):
+    if st.button(f"Task {idx + 1} Completed"):
       continue
     else:
       break
