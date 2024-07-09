@@ -5,9 +5,19 @@ def get_tasks():
     tasks = [task.strip() for task in f.readlines()]
   return tasks
 
+# def display_tasks(tasks):
+#   for task in tasks:
+#     if st.checkbox(task):
+#       continue
+#     else:
+#       break
+
 def display_tasks(tasks):
-  for task in tasks:
-    if st.checkbox(task):
+  for idx, task in enumerate(tasks):
+    name, description = task.split('-')
+    st.subheader(f"Task {idx + 1}: {name.strip()}")
+    st.write(f"{description}")
+    if st.button("Done")
       continue
     else:
       break
