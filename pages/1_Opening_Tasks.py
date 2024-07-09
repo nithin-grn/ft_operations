@@ -5,13 +5,19 @@ def get_tasks():
     tasks = [task.strip() for task in f.readlines()]
   return tasks
 
+def submit_update():
+  pass
+
 def display_tasks(tasks):
-  for task in tasks:
+  for idx, task in enumerate(tasks):
     with st.container(border = True):
       name, description = task.split('-')
-      checked = st.checkbox(f":red-background[{name}]")
+      checked = st.checkbox(f":red-background[Task {idx + 1}: {name}]")
       st.write(description)
     if checked:
+      if idx + 1 == len(tasks):
+        if st.button("Submit"):
+          submit_update()
       continue
     else:
       break
