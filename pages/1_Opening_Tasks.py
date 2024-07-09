@@ -40,6 +40,8 @@ def check_completion(df, time):
   if today in list(df['Date'].values):
     if df.loc[df['Date'] == today, time][0] == 'Done':
       st.info('Looks like you have completed the tasks today.')
+    else:
+      st.info('Hmm, Looks like you have to complete the tasks yet.')
   return df
 
 if __name__ == "__main__":
