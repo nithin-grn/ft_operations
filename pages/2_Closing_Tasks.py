@@ -48,11 +48,11 @@ def day_reports():
   st.subheader('EOD Report', divider = 'grey')
   st.warning('Done for the day?')
   with st.container(border = True):
-    today_sales = st.number_input('Enter today\'s sales in $:', minimum = 0.0)
-    comp_sales = st.number_input('Enter same day last week\'s sales in $:', minimum = 0.0)
-    bookings = st.number_input('Number of bookings/Table reservations made today:', minimum = 0)
-    events = st.number_input('Number of Events held today:', minimum = 0)
-    reviews = st.number_input('Number of Google Reviews today:', minimum = 0)
+    today_sales = st.number_input('Enter today\'s sales in $:', min_value = 0.0)
+    comp_sales = st.number_input('Enter same day last week\'s sales in $:', min_value = 0.0)
+    bookings = st.number_input('Number of bookings/Table reservations made today:', min_value = 0)
+    events = st.number_input('Number of Events held today:', min_value = 0)
+    reviews = st.number_input('Number of Google Reviews today:', min_value = 0)
 
 if __name__ == "__main__":
   st.header('Closing Tasks')
