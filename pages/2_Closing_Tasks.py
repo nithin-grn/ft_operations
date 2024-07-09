@@ -86,10 +86,10 @@ if __name__ == "__main__":
   st.header('Closing Tasks')
   conn = get_connection()
   df = get_df(conn, "Activities")
-  check_completion(df, 'Closing Tasks')
-  tasks = get_tasks('closing.txt')
-  c1, c2 = st.columns([2, 1])
+  c1, c2 = st.columns(2)
   with c1:
+    check_completion(df, 'Closing Tasks')
+    tasks = get_tasks('closing.txt')
     display_tasks(df, tasks, 'Closing Tasks')
   with c2:
     day_reports(conn)
