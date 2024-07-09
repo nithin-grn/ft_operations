@@ -9,6 +9,8 @@ def display_tasks(tasks):
   for task in tasks:
     if st.checkbox(task):
       continue
+    else:
+      break
 
 if __name__ == "__main__":
   st.header('Opening Tasks')
