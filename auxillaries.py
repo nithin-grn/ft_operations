@@ -1,6 +1,7 @@
 import streamlit as st
 from streamlit_gsheets import GSheetsConnection
 from datetime import datetime
+import pytz
 
 def get_tasks(filename):
   with open(filename, 'r') as f:
@@ -38,7 +39,9 @@ def display_tasks(tasks, time):
       break
 
 def today_date_string():
-  today = datetime.today()
+  utc_now = datetime.utcnow()
+  tz = pytz.timezone('Australia/Melbourne')
+  today = utc_now.replace(tzinfo=pytz.utc).astimezone(tz)
   today_str = today.strftime('%d-%m-%Y')
   return today_str
 
