@@ -38,7 +38,7 @@ def display_tasks(df, tasks, time):
 def check_completion(df, time):
   today = today_date_string()
   if today in list(df['Date'].values):
-    if df.loc[df['Date'] == today, time].value == 'Done':
+    if df.loc[df['Date'] == today, time][0] == 'Done':
       st.info('Looks like you have completed the tasks today.')
   return df
 
