@@ -3,42 +3,6 @@ from streamlit_gsheets import GSheetsConnection
 from datetime import datetime
 import pytz
 
-def get_tasks(filename):
-  with open(filename, 'r') as f:
-    tasks = [task.strip() for task in f.readlines()]
-  return tasks
-
-def label_activity(df, time):
-  today = today_date_string()
-  if today in list(df['Date'].values):
-    df.loc[df['Date'] == today, time] = 'Done'
-  else:
-    new_row = {'Date': today, 'Opening Tasks': 'Done'}
-    df = df.append(new_row, ignore_index=True)
-  return df
-
-def submit_update(time):
-  with st.status('Submitting, please wait...'):
-    conn = get_connection()
-    df = get_df(conn, "Activities")
-    df = label_activity(df, time)
-    update_worksheet(conn, 'Activities', df)
-    st.success("Submitted!")
-
-def display_tasks(tasks, time):
-  for idx, task in enumerate(tasks):
-    with st.container(border = True):
-      name, description = task.split('-')
-      checked = st.checkbox(f":red-background[Task {idx + 1}: {name}]")
-      st.write(description)
-    if checked:
-      if idx + 1 == len(tasks):
-        if st.button("Submit", type = "primary", use_container_width = True):
-          submit_update(time)
-      continue
-    else:
-      break
-
 def today_date_string():
   utc_now = datetime.utcnow()
   tz = pytz.timezone('Australia/Melbourne')
