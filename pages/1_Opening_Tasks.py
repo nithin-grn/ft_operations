@@ -6,7 +6,7 @@ def get_tasks():
   return tasks
 
 def submit_update():
-  pass
+  st.write(Submitted!)
 
 def display_tasks(tasks):
   for idx, task in enumerate(tasks):
