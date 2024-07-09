@@ -2,6 +2,25 @@ import streamlit as st
 from streamlit_gsheets import GSheetsConnection
 from datetime import datetime
 
+def get_tasks(filename):
+  with open(filename, 'r') as f:
+    tasks = [task.strip() for task in f.readlines()]
+  return tasks
+
+def display_tasks(tasks):
+  for idx, task in enumerate(tasks):
+    with st.container(border = True):
+      name, description = task.split('-')
+      checked = st.checkbox(f":red-background[Task {idx + 1}: {name}]")
+      st.write(description)
+    if checked:
+      if idx + 1 == len(tasks):
+        if st.button("Submit", type = "primary", use_container_width = True):
+          submit_update()
+      continue
+    else:
+      break
+
 def today_date_string():
   today = datetime.today()
   today_str = today.strftime('%d-%m-%Y')
