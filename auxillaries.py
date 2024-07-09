@@ -18,11 +18,12 @@ def label_activity(df, time):
   return df
 
 def submit_update(time):
-  conn = get_connection()
-  df = get_df(conn, "Activities")
-  df = label_activity(df, time)
-  update_worksheet(conn, 'Activities', df)
-  st.write("Submitted!")
+  with st.status('Submitting, please wait...'):
+    conn = get_connection()
+    df = get_df(conn, "Activities")
+    df = label_activity(df, time)
+    update_worksheet(conn, 'Activities', df)
+    st.success("Submitted!")
 
 def display_tasks(tasks, time):
   for idx, task in enumerate(tasks):
