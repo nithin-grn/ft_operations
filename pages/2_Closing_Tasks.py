@@ -45,15 +45,29 @@ def check_completion(df, time):
   return df
 
 def submit_eod_report(conn, today_sales, comp_sales, bookings, events, reviews, inv_update):
-  today = today_date_string()
-  act_df = get_df(conn, "Activities")
-  if today in list(act_df['Date'].values):
-    act_df.loc[act_df['Date'] == today, 'Bookings'] = bookings
-    act_df.loc[act_df['Date'] == today, 'Events'] = events
-    act_df.loc[act_df['Date'] == today, 'Reviews'] = reviews
-    act_df.loc[act_df['Date'] == today, 'Inventory Update'] = inv_update
-  st.write(act_df)
-
+  with st.status('Submitting, please wait...', expanded = True):
+    today = today_date_string()
+    act_df = get_df(conn, "Activities")
+    if today in list(act_df['Date'].values):
+      act_df.loc[act_df['Date'] == today, 'Bookings'] = bookings
+      act_df.loc[act_df['Date'] == today, 'Events'] = events
+      act_df.loc[act_df['Date'] == today, 'Reviews'] = reviews
+      act_df.loc[act_df['Date'] == today, 'Inventory Update'] = inv_update
+    else:
+      new_row = {'Date': today, 'Bookings': bookings, 'Events': events, 'Reviews': reviews, 'Inventory Update': inv_update}
+      act_df = act_df.append(new_row, ignore_index=True)
+    update_worksheet(conn, 'Activities', act_df)
+    
+    sales_df = get_df(conn, "Sales")
+    if today in list(sales_df['Date'].values):
+      sales_df.loc[sales_df['Date'] == today, 'Actual Sale'] = today_sales
+      sales_df.loc[sales_df['Date'] == today, 'Comparison Sale'] = comp_sales
+      sales_df.loc[sales_df['Date'] == today, 'Variance'] = today_sales - comp_sales
+    else:
+      new_row = {'Date': today, 'Actual Sale': today_sales, 'Comparison Sale': comp_sales, 'Variance': today_sales - comp_sales}
+      sales_df = sales_df.append(new_row, ignore_index=True)
+    update_worksheet(conn, 'Sales', sales_df)
+  
 def day_reports(conn):
   st.subheader('EOD Report', divider = 'grey')
   st.warning('Done for the day?')
