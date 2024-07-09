@@ -79,7 +79,7 @@ def main():
 		st.image('closing.jpg')
 		st.page_link("pages/1_Closing_Tasks.py", label="Closing Tasks", icon="🌇", use_container_width = True)
   
-  # st.subheader('Daily Tasks')
+  ## st.subheader('Daily Tasks')
   # st.caption('Start your day with the opening tasks.')
   # images = get_clickable_images(['opening.jpg', 'closing.jpg'])
   # with st.container():
