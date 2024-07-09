@@ -12,3 +12,5 @@ def display_tasks(tasks):
 
 if __name__ == "__main__":
   st.header('Opening Tasks')
+  tasks = get_tasks()
+  display_tasks(tasks)
