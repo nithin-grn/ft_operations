@@ -69,33 +69,33 @@ def main():
 
   display_reminders()
 
+  # st.subheader('Daily Tasks')
+  # st.caption('Start your day with the opening tasks.')
+  # c1, c2 = st.columns(2)
+  # with c1:
+  #   st.image('opening.jpg')
+  #   st.page_link("pages/1_Opening_Tasks.py", label="Opening Tasks", icon="🌅", use_container_width = True)
+  # with c2:
+  #   st.image('closing.jpg')
+  #   st.page_link("pages/2_Closing_Tasks.py", label="Closing Tasks", icon="🌇", use_container_width = True)
+  
   st.subheader('Daily Tasks')
   st.caption('Start your day with the opening tasks.')
+  images = get_clickable_images(['opening.jpg', 'closing.jpg'])
+  with st.container():
+        # Display clickable images in a flexbox layout
+        clicked = clickable_images(
+            images,
+            titles=[f"Click here for tasks" for i in range(len(images))],
+            div_style={"display": "flex", "justify-content": "center", "flex-wrap": "wrap"},
+            # div_style = {"display": "flex", "flex-direction": "column", "justify-content": "center", "align-items": "center"},
+            img_style={"margin": "1%", "height": "200px", "width": "48%"}
+        )
   c1, c2 = st.columns(2)
-  with c1:
-    st.image('opening.jpg')
-    st.page_link("pages/1_Opening_Tasks.py", label="Opening Tasks", icon="🌅", use_container_width = True)
-  with c2:
-    st.image('closing.jpg')
-    st.page_link("pages/2_Closing_Tasks.py", label="Closing Tasks", icon="🌇", use_container_width = True)
-  
-  ## st.subheader('Daily Tasks')
-  # st.caption('Start your day with the opening tasks.')
-  # images = get_clickable_images(['opening.jpg', 'closing.jpg'])
-  # with st.container():
-  #       # Display clickable images in a flexbox layout
-  #       clicked = clickable_images(
-  #           images,
-  #           titles=[f"Click here for tasks" for i in range(len(images))],
-  #           div_style={"display": "flex", "justify-content": "center", "flex-wrap": "wrap"},
-  #           # div_style = {"display": "flex", "flex-direction": "column", "justify-content": "center", "align-items": "center"},
-  #           img_style={"margin": "1%", "height": "200px", "width": "48%"}
-  #       )
-  # c1, c2 = st.columns(2)
-  # c1.markdown("<div style='text-align: center;'><b>Opening Tasks</b></div>", unsafe_allow_html=True)
-  # c2.markdown("<div style='text-align: center;'><b>Closing Tasks</b></div>", unsafe_allow_html=True)
-  # if clicked > -1:
-  #     st.switch_page("pages/1_Opening_Tasks.py") if clicked == 0 else (st.switch_page("pages/2_Closing_Tasks.py") if clicked == 1 else None)
+  c1.markdown("<div style='text-align: center;'><b>Opening Tasks</b></div>", unsafe_allow_html=True)
+  c2.markdown("<div style='text-align: center;'><b>Closing Tasks</b></div>", unsafe_allow_html=True)
+  if clicked > -1:
+      st.switch_page("pages/1_Opening_Tasks.py") if clicked == 0 else (st.switch_page("pages/2_Closing_Tasks.py") if clicked == 1 else None)
 
   st.subheader('Utilities')
   images = get_clickable_images(['inventory.jpg', 'service.jpeg'])
