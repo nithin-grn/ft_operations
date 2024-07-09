@@ -7,10 +7,20 @@ def get_tasks(filename):
     tasks = [task.strip() for task in f.readlines()]
   return tasks
 
-def submit_update():
+def label_activity(df, time):
+  today = today_date_string()
+  if today in df['Date']:
+    df.loc[df['Date'] == today, f'{time}'] = 'Done'
+  
+  
+
+def submit_update(time):
+  conn = get_connection()
+  df = get_df(conn, "Activities")
+  label_activity(df, time)
   st.write("Submitted!")
 
-def display_tasks(tasks):
+def display_tasks(tasks, time):
   for idx, task in enumerate(tasks):
     with st.container(border = True):
       name, description = task.split('-')
@@ -19,7 +29,7 @@ def display_tasks(tasks):
     if checked:
       if idx + 1 == len(tasks):
         if st.button("Submit", type = "primary", use_container_width = True):
-          submit_update()
+          submit_update(time)
       continue
     else:
       break
