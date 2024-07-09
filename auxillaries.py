@@ -9,7 +9,7 @@ def get_tasks(filename):
 
 def label_activity(df, time):
   today = today_date_string()
-  st.write(df['Date'].values)
+  st.write(type(df['Date'].values[0]))
   if today in df['Date'].values:
     st.write('Yes')
     df.loc[df['Date'] == today, time] = 'Done'
