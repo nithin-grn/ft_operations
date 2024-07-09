@@ -44,7 +44,17 @@ def check_completion(df, time):
       st.info('Hmm, Looks like you have to complete the tasks yet.')
   return df
 
-def day_reports():
+def submit_eod_report(conn, today_sales, comp_sales, bookings, events, reviews, inv_update):
+  today = today_date_string()
+  act_df = get_df(conn, "Activities")
+  if today in list(act_df['Date'].values):
+    act_df.loc[act_df['Date'] == today, 'Bookings'] = bookings
+    act_df.loc[act_df['Date'] == today, 'Events'] = events
+    act_df.loc[act_df['Date'] == today, 'Reviews'] = reviews
+    act_df.loc[act_df['Date'] == today, 'Inventory Update'] = inv_update
+  st.write(act_df)
+
+def day_reports(conn):
   st.subheader('EOD Report', divider = 'grey')
   st.warning('Done for the day?')
   with st.container(border = True):
@@ -53,6 +63,9 @@ def day_reports():
     bookings = st.number_input('Number of bookings/Table reservations made today:', min_value = 0)
     events = st.number_input('Number of Events held today:', min_value = 0)
     reviews = st.number_input('Number of Google Reviews today:', min_value = 0)
+    inv_update = st.selectbox('Did you update the inventory today', options = ['Yes', 'No'])
+    if st.button('Submit EOD report', type = 'primary', use_container_width = True):
+      submit_eod_report(conn, today_sales, comp_sales, bookings, events, reviews, inv_update)
 
 if __name__ == "__main__":
   st.header('Closing Tasks')
@@ -61,4 +74,4 @@ if __name__ == "__main__":
   check_completion(df, 'Closing Tasks')
   tasks = get_tasks('closing.txt')
   display_tasks(df, tasks, 'Closing Tasks')
-  day_reports()
+  day_reports(conn)
