@@ -13,6 +13,7 @@ def get_tasks():
 #       break
 
 def display_tasks(tasks):
+  st.write(tasks)
   for idx, task in enumerate(tasks):
     name, description = task.split('-')
     st.subheader(f"Task {idx + 1}: {name.strip()}")
