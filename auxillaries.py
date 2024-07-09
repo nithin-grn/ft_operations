@@ -11,7 +11,7 @@ def label_activity(df, time):
   today = today_date_string()
   st.write(df['Date'].values)
   if today in df['Date'].values:
-    df.loc[df['Date'] == today, f'{time}'] = 'Done'
+    df.loc[df['Date'] == today, time] = 'Done'
   st.write(df)
   
 
