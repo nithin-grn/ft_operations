@@ -63,7 +63,7 @@ def day_reports(conn):
     bookings = st.number_input('Number of bookings/Table reservations made today:', min_value = 0)
     events = st.number_input('Number of Events held today:', min_value = 0)
     reviews = st.number_input('Number of Google Reviews today:', min_value = 0)
-    inv_update = st.selectbox('Did you update the inventory today', options = ['Yes', 'No'])
+    inv_update = st.selectbox('Did you update the inventory today', options = ['No', 'Yes'])
     if st.button('Submit EOD report', type = 'primary', use_container_width = True):
       submit_eod_report(conn, today_sales, comp_sales, bookings, events, reviews, inv_update)
 
