@@ -7,9 +7,10 @@ def get_tasks():
 
 def display_tasks(tasks):
   for task in tasks:
-    name, description = task.split('-')
-    checked = st.checkbox(name)
-    st.write(description)
+    with st.container(border = True)
+      name, description = task.split('-')
+      checked = st.checkbox(name)
+      st.write(description)
     if checked:
       continue
     else:
