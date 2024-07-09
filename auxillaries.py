@@ -15,12 +15,13 @@ def label_activity(df, time):
   else:
     new_row = {'Date': today, 'Opening Tasks': 'Done'}
     df = df.append(new_row, ignore_index=True)
-  st.write(df)
+  return df
 
 def submit_update(time):
   conn = get_connection()
   df = get_df(conn, "Activities")
-  label_activity(df, time)
+  df = label_activity(df, time)
+  update_worksheet(conn, 'Activities', df)
   st.write("Submitted!")
 
 def display_tasks(tasks, time):
