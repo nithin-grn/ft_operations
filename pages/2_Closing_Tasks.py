@@ -22,6 +22,7 @@ def submit_update(df, time):
     st.success("Submitted!")
 
 def display_tasks(df, tasks, time):
+  st.subheader('Tasks', divider = 'grey')
   for idx, task in enumerate(tasks):
     with st.container(border = True):
       name, description = task.split('-')
