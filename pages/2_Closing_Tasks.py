@@ -1,6 +1,13 @@
 import streamlit as st
 from auxillaries import *
 
+st.set_page_config(
+    page_title="Closing Tasks",
+    page_icon="🗒️",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
 def get_tasks(filename):
   with open(filename, 'r') as f:
     tasks = [task.strip() for task in f.readlines()]
