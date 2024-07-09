@@ -7,6 +7,9 @@ def get_tasks(filename):
     tasks = [task.strip() for task in f.readlines()]
   return tasks
 
+def submit_update():
+  st.write("Submitted!")
+
 def display_tasks(tasks):
   for idx, task in enumerate(tasks):
     with st.container(border = True):
