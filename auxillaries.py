@@ -10,13 +10,12 @@ def get_tasks(filename):
 
 def label_activity(df, time):
   today = today_date_string()
-  st.write(today)
-  # st.write(type(df['Date'].values[0]))
   if today in list(df['Date'].values):
-    st.write('Yes')
     df.loc[df['Date'] == today, time] = 'Done'
+  else:
+    new_row = {'Date': today, 'Opening Tasks': 'Done'}
+    df = df.append(new_row, ignore_index=True)
   st.write(df)
-  
 
 def submit_update(time):
   conn = get_connection()
