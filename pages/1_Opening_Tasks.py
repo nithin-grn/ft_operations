@@ -16,7 +16,7 @@ def display_tasks(tasks):
       st.write(description)
     if checked:
       if idx + 1 == len(tasks):
-        if st.button("Submit"):
+        if st.button("Submit", type = "primary", use_container_width = True):
           submit_update()
       continue
     else:
