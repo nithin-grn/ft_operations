@@ -88,7 +88,7 @@ if __name__ == "__main__":
   df = get_df(conn, "Activities")
   check_completion(df, 'Closing Tasks')
   tasks = get_tasks('closing.txt')
-  c1, c2 = st.columns([3, 1])
+  c1, c2 = st.columns([2, 1])
   with c1:
     display_tasks(df, tasks, 'Closing Tasks')
   with c2:
