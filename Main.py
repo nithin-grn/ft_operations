@@ -30,9 +30,6 @@ pages = {
     # ]
 }
 
-pg = st.navigation(pages)
-pg.run()
-
 st.logo('logo.jpg')
 st.header('FT Local Kitchen & Bar', divider = 'grey')
 st.sidebar.header('FT Local Kitchen & Bar')
