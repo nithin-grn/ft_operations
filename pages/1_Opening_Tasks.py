@@ -20,8 +20,6 @@ def display_tasks(tasks):
     st.write(f"{description}")
     if st.button(f"Task {idx + 1} Completed"):
       continue
-    else:
-      break
 
 if __name__ == "__main__":
   st.header('Opening Tasks')
