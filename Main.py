@@ -108,7 +108,7 @@ def main():
             img_style={"margin": "1%", "height": "200px", "width": "48%"}
         )
   c1, c2 = st.columns(2)
-  c1.markdown("<div style='text-align: center;'><b>Inventory</b></div>", unsafe_allow_html=True)
+  c1.markdown("<div style='text-align: center;'><b>Offers and Discounts</b></div>", unsafe_allow_html=True)
   c2.markdown("<div style='text-align: center;'><b>Service Expectations</b></div>", unsafe_allow_html=True)
   if clicked > -1:
       st.switch_page("pages/3_Offers_and_Discounts.py") if clicked == 0 else (st.switch_page("pages/4_Service_Expectations.py") if clicked == 1 else None)
