@@ -16,20 +16,6 @@ st.set_page_config(
     # }
 )
 
-pages = {
-    "Home": [
-        st.Page("Main.py", title="Home")
-    ],
-    "Daily Tasks" : [
-        st.Page("pages/1_Opening_Tasks.py", title="Opening Tasks"),
-        st.Page("pages/2_Closing_Tasks.py", title="Closing Tasks")
-    ]
-    # "Resources" : [
-    #     st.Page("learn.py", title="Learn about us"),
-    #     st.Page("trial.py", title="Try it out")
-    # ]
-}
-
 st.logo('logo.jpg')
 st.header('FT Local Kitchen & Bar', divider = 'grey')
 st.sidebar.header('FT Local Kitchen & Bar')
@@ -140,7 +126,4 @@ def disp_reminders():
 if __name__ == "__main__":
   if "saw" not in st.session_state and len(reminders) > 0:
         disp_reminders()
-  pg = st.navigation(pages)
-  pg.run()
-
   main()
