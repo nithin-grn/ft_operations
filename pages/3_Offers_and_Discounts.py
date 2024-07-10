@@ -2,12 +2,12 @@ import streamlit as st
 
 def display_offer(name, when, desc):
     with st.container(border = True):
-        st.header(name, divider = 'red')
+        st.header(f":red-background[{name}]", divider = 'red')
         st.header(when)
         st.subheader(desc)
 
 if __name__ == "__main__":
-    st.header('Offers and Discounts')
+    st.header('Offers and Discounts', divider = 'grey')
     c1, c2, c3 = st.columns(3, vertical_alignment = 'top')
     with c1:
         display_offer('Buy 1 Get 1', 'Tuesday to Thursday', 'Buy 1 Get 1 free burger')
