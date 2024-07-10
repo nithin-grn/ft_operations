@@ -29,7 +29,7 @@ def submit_update(df, time):
     st.success("Submitted!")
 
 def display_tasks(df, tasks, time):
-  st.markdown("turn off the alarm\nTurn on coffee machine\nSwitch on all the lights, heaters, music, etc.")
+  st.markdown("turn off the alarm\n\nTurn on coffee machine\n\nSwitch on all the lights, heaters, music, etc.")
   for idx, task in enumerate(tasks):
     with st.container(border = True):
       name, description = task.split('-')
