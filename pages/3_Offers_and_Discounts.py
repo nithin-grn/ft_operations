@@ -9,7 +9,7 @@ def display_offer(name, when, desc):
 
 if __name__ == "__main__":
     st.header('Offers and Discounts')
-    c1, c2, c3 = st.columns(3)
+    c1, c2, c3 = st.columns(3, vertical_alignment = 'bottom')
     with c1:
         display_offer('Buy 1 Get 1', 'Tuesday to Thursday', 'Buy 1 Get 1 free burger')
     with c2:
@@ -17,7 +17,7 @@ if __name__ == "__main__":
     with c3:
         display_offer('Happy Hour', 'All days 4-7 pm', 'Description')
 
-    c1, c2 = st.columns(2)
+    c1, c2 = st.columns(2, vertical_alignment = 'bottom')
     with c1:
         display_offer('Kids Day!', 'Sunday 4 pm', 'Kids Movie & Kids Eat for free')
     with c2:
