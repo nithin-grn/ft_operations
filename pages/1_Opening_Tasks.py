@@ -33,7 +33,7 @@ def display_tasks(df, tasks, time):
     with st.container(border = True):
       name, description = task.split('-')
       checked = st.checkbox(f":red-background[Task {idx + 1}: {name}]")
-      st.markdown(description)
+      st.markdown(rf"{description}")
     if checked:
       if idx + 1 == len(tasks):
         if st.button("Submit", type = "primary", use_container_width = True):
