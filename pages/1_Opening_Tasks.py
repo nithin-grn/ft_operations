@@ -33,6 +33,7 @@ def display_tasks(df, tasks, time):
     with st.container(border = True):
       name, description = task.split('-')
       checked = st.checkbox(f":red-background[Task {idx + 1}: {name}]")
+      description = description.replace(r'\n', '\n')
       st.markdown(f"{description.strip()}")
     if checked:
       if idx + 1 == len(tasks):
