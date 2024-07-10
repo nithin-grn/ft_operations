@@ -1,9 +1,8 @@
 import streamlit as st
 
 def display_offer(name, when, desc):
-    with st.container(border = True, height = 200):
-        st.title(name)
-        st.divider()
+    with st.container(border = True):
+        st.header(name, divider = 'red')
         st.header(when)
         st.subheader(desc)
 
