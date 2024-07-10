@@ -1,4 +1,4 @@
-System Controls - Turn off the alarm\nTurn on coffee machine\nSwitch on all the lights, heaters, music, etc.
+System Controls - Turn off the alarm\n\nTurn on coffee machine\n\nSwitch on all the lights, heaters, music, etc.
 Task 2 - Description 2
 Task 3 - Description 3
 Task 4 - Description 4
