@@ -1,5 +1,12 @@
 import streamlit as st
 
+st.set_page_config(
+    page_title="Offers",
+    page_icon="🗒️",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
 def display_offer(name, when, desc):
     with st.container(border = True):
         st.header(f":red-background[{name}]", divider = 'red')
