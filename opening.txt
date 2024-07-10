@@ -1,4 +1,7 @@
-System Controls - Turn off the alarm \n Turn on coffee machine \n Switch on all the lights, heaters, music, etc.
-Task 2 - Description 2
-Task 3 - Description 3
-Task 4 - Description 4
+System Controls - Turn off the alarm \n Turn on the coffee machine \n Switch on all the lights, heaters, music, etc.
+Cleaning - Sweep up the leaves outside \n Sweep and Mop floors if necessary \n Clean store corners and windows \n Maintain the store odour and freshness \n Recheck restrooms
+Setting up - Set up outdoor tables and cushion \n Set up your workspace (garnishes, beer mats, etc.) \n Check the freezer quality (milk and ice cream) \n Clean the table glasses
+Restocking - Restock cutlery and side plates (both indoor and outdoor) \n Make sure you are aware of the available stock
+Menu Update - Update the menu on Restoplus and Uber
+Missed chores - Catch up on any missed chores from the night before (Please check the group chat)
+Inventory check - Update the inventory (Thursdays and Sundays)
