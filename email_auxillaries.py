@@ -21,8 +21,8 @@ def send_email_report(act_df, sales_df):
   multipart["To"] = email
   multipart["Subject"] = f'FT Daily Report - {today}'  
 
-  act_today = act_df.iloc[act_df['Date'] == today].to_html(index=False, escape=False)
-  sales_today = sales_df.iloc[sales_df['Date'] == today].to_html(index=False, escape=False)
+  act_today = act_df.loc[act_df['Date'] == today].to_html(index=False, escape=False)
+  sales_today = sales_df.loc[sales_df['Date'] == today].to_html(index=False, escape=False)
   
   message = f"""\
   <p>Greetings,</p>
