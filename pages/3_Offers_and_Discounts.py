@@ -9,7 +9,7 @@ st.set_page_config(
 
 def display_offer(name, when, desc):
     with st.container(border = True):
-        st.header(f":red-background[{name}]", divider = 'red')
+        st.header(f":blue[{name}]", divider = 'blue')
         st.header(when)
         st.subheader(desc)
 
