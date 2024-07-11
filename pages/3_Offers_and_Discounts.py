@@ -10,8 +10,8 @@ st.set_page_config(
 def display_offer(name, when, desc):
     with st.container(border = True):
         st.header(f":blue[{name}]", divider = 'blue')
-        st.header(when)
-        st.subheader(desc)
+        st.write(":red-background[When?]:", when)
+        st.write(":green-background[Description]:", desc)
 
 if __name__ == "__main__":
     st.header('Offers and Discounts', divider = 'grey')
