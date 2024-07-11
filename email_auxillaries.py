@@ -21,9 +21,7 @@ def send_email_report():
   
   message = f"""\
   <p>Greetings,</p>
-  <p>A reservation has been made. Here are the details:</p><br>
-  # <p><strong>Name: {name}</strong></p>
-  
+  <p>A reservation has been made. Here are the details:</p><br>  
   <p>Cheers.</p>
   """
   
