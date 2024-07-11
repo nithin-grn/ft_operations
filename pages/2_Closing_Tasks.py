@@ -77,8 +77,7 @@ def submit_eod_report(conn, today_sales, comp_sales, bookings, events, reviews, 
       new_row = {'Date': today, 'Actual Sale': today_sales, 'Comparison Sale': comp_sales, 'Variance': today_sales - comp_sales}
       sales_df = sales_df.append(new_row, ignore_index=True)
     update_worksheet(conn, 'Sales', sales_df)
-    st.write(act_df.loc[act_df['Date'] == today])
-    send_email_report()
+    send_email_report(act_df, sales_df)
     st.success('Successfully submitted!')
   
 def day_reports(conn):
