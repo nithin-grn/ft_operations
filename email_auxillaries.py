@@ -6,7 +6,7 @@ import auxillaries as ax
 import smtplib
 import os
 
-def send_email_report(name, number, size, time, date):
+def send_email_report():
   multipart = MIMEMultipart()
   try:
     email = st.secrets['email']
@@ -23,10 +23,6 @@ def send_email_report(name, number, size, time, date):
   <p>Greetings,</p>
   <p>A reservation has been made. Here are the details:</p><br>
   # <p><strong>Name: {name}</strong></p>
-  # <p><strong>Contact: {number}</strong></p>
-  # <p><strong>Date: {date}</strong></p>
-  # <p><strong>Group size: {size}</strong></p>
-  # <p><strong>Time slot: {time}</strong></p>
   
   <p>Cheers.</p>
   """
