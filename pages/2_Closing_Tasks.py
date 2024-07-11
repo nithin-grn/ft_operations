@@ -1,5 +1,6 @@
 import streamlit as st
 from auxillaries import *
+from email_auxillaries import *
 
 st.set_page_config(
     page_title="Closing Tasks",
