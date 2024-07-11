@@ -33,7 +33,8 @@ def send_email_report(act_df, sales_df):
   <p><strong>Sales Report:</strong></p>
   {sales_today}
   <br>
-  <p>Cheers.</p>
+  <p>Cheers,</p>
+  <p><strong>FT Operations Team.</strong></p>
   """
   
   multipart.attach(MIMEText(message, "html"))
