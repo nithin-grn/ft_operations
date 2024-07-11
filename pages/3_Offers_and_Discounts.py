@@ -15,7 +15,7 @@ def display_offer(name, when, desc):
 
 if __name__ == "__main__":
     st.header('Offers and Discounts', divider = 'grey')
-    c1, c2, c3, c4, c5 = st.columns(3, vertical_alignment = 'top')
+    c1, c2, c3, c4, c5 = st.columns(5, vertical_alignment = 'top')
     with c1:
         display_offer('Buy 1 Get 1', 'Tuesday to Thursday', 'Buy 1 Get 1 free burger')
     with c2:
